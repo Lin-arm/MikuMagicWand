@@ -1,7 +1,7 @@
 import localforage from 'localforage';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { Snapshot } from '../types/snapshot';
+import { ExtendedSnapshot } from '../types/snapshot';
 import { detectImageMime } from './imageDetect';
 
 const localStorage = localforage.createInstance({
@@ -17,11 +17,11 @@ const hanashiroStorage = localforage.createInstance({
   name: 'Hanashiro',
 });
 
-export const getSnapshotInfo = async (snapshotId: string): Promise<Snapshot | null> => {
-  return await snapshotStorage.getItem<Snapshot>(snapshotId);
+export const getSnapshotInfo = async (snapshotId: string): Promise<ExtendedSnapshot | null> => {
+  return await snapshotStorage.getItem<ExtendedSnapshot>(snapshotId);
 };
 
-export const writeSnapshotInfo = async (snapshotId: string, snapshotInfo: Snapshot) => {
+export const writeSnapshotInfo = async (snapshotId: string, snapshotInfo: ExtendedSnapshot) => {
   await snapshotStorage.setItem(snapshotId, snapshotInfo);
 };
 

@@ -17,6 +17,16 @@ observeElement(
         send('openChangeScreenshot');
       });
 
+      // 连接议题按钮
+      const LinkToIssueIcon = createBarIcon('link', '连接议题', () => {
+        send('openLinkToIssue');
+      });
+
+      // 跳转连接议题按钮
+      const JumpLinkedIssueIcon = createBarIcon('arrow_outward', '跳转连接议题', () => {
+        send('openJumpLinkedIssue');
+      });
+
       // 设置按钮
       const SettingsIcon = createBarIcon('settings', '脚本设置', () => {
         send('openSettings');
@@ -37,7 +47,7 @@ observeElement(
         window.open('https://afdian.com/a/Adpro');
       });
 
-      iconBar.append(ChangeScreenshotIcon, SettingsIcon, CountIcon, HelpIcon, SponsorIcon);
+      iconBar.append(ChangeScreenshotIcon, LinkToIssueIcon, JumpLinkedIssueIcon, SettingsIcon, CountIcon, HelpIcon, SponsorIcon);
       selectorSyntaxField.insertAdjacentElement('beforebegin', iconBar);
     }
   },

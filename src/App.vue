@@ -17,6 +17,8 @@ import Settings from './components/Settings.vue';
 import Help from './components/Help.vue';
 import ChangeScreenshot from './components/ChangeScreenshot.vue';
 import Count from './components/Count.vue';
+import LinkToIssue from './components/LinkToIssue.vue';
+import JumpLinkedIssue from './components/JumpLinkedIssue.vue';
 
 export default defineComponent({
   components: {
@@ -25,6 +27,8 @@ export default defineComponent({
     Help,
     ChangeScreenshot,
     Count,
+    LinkToIssue,
+    JumpLinkedIssue,
   },
   data() {
     return {
@@ -50,6 +54,14 @@ export default defineComponent({
 
     receive('openCount', () => {
       this.currentComponent = 'Count';
+    });
+
+    receive('openLinkToIssue', () => {
+      this.currentComponent = 'LinkToIssue';
+    });
+
+    receive('openJumpLinkedIssue', () => {
+      this.currentComponent = 'JumpLinkedIssue';
     });
 
     receive('closePage', () => {

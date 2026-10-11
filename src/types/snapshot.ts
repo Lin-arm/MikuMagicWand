@@ -82,3 +82,7 @@ export interface SizeExt {
   height: number;
   width: number;
 }
+
+export interface ExtendedSnapshot extends Snapshot {
+  linkedIssue?: string;
+}
