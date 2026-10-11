@@ -1,1 +1,1 @@
-1. 移除 simplyActivityIds 功能
+1. 修复修改节点阈值无效的问题
