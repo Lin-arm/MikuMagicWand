@@ -1,10 +1,6 @@
 import { snackbar, confirm } from 'mdui';
 import { encode } from 'js-base64';
-import {
-  getHanashiroSettings,
-  setHanashiroSettings,
-  getSnapshotInfo,
-} from '../utils/indexedDB';
+import { getHanashiroSettings, setHanashiroSettings, getSnapshotInfo } from '../utils/indexedDB';
 import { getInspectSettings, setInspectSettings } from '../utils/inspectSettings';
 import { receive } from '../utils/event';
 import getSnapshotId from '../utils/getSnapshotId';

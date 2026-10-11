@@ -2,10 +2,7 @@ import { snackbar, confirm, dialog } from 'mdui';
 import { send, receive } from '../utils/event';
 import { createBarIcon } from '../utils/createIcon';
 import observeElement from '../utils/observeElement';
-import {
-  getHanashiroSettings,
-  setHanashiroSettings,
-} from '../utils/indexedDB';
+import { getHanashiroSettings, setHanashiroSettings } from '../utils/indexedDB';
 import { getInspectSettings, setInspectSettings } from '../utils/inspectSettings';
 import insertBarIcon from './insertBarIcon';
 

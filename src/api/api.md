@@ -128,9 +128,9 @@ window.HatsuneMiku.utils.storage.setHanashiroSettings(item, value);
 window.HatsuneMiku.utils.storage.getInspectSettings();
 ```
 
-| 返回值名称      | 返回值类型                         | 说明                                 |
-| --------------- | ---------------------------------- | ------------------------------------ |
-| inspectSettings |      IInspectSettings \| null      | 网页审查工具的设置，不存在返回`null` |
+| 返回值名称      | 返回值类型               | 说明                                 |
+| --------------- | ------------------------ | ------------------------------------ |
+| inspectSettings | IInspectSettings \| null | 网页审查工具的设置，不存在返回`null` |
 
 #### setInspectSettings
 
