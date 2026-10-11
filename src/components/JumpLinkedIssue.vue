@@ -11,15 +11,15 @@ export default defineComponent({
       const snapshotId = await getSnapshotId();
       const snapshotInfo = (await getSnapshotInfo(snapshotId))!;
 
-      if(snapshotInfo.linkedIssue){
+      if (snapshotInfo.linkedIssue) {
         const paths = snapshotInfo.linkedIssue.split('#');
         const url = `https://github.com/${paths[0]}/issues/${paths[1]}`;
         window.open(url);
-      }
-      else snackbar({
-        message: '当前快照未连接至议题！',
-        placement: 'top',
-      });
+      } else
+        snackbar({
+          message: '当前快照未连接至议题！',
+          placement: 'top',
+        });
 
       send('closePage');
     },

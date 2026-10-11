@@ -11,7 +11,7 @@ export default defineComponent({
       const snapshotId = await getSnapshotId();
       const snapshotInfo = (await getSnapshotInfo(snapshotId))!;
 
-      if(!link && snapshotInfo.linkedIssue){
+      if (!link && snapshotInfo.linkedIssue) {
         delete snapshotInfo.linkedIssue;
         await writeSnapshotInfo(snapshotId, snapshotInfo);
 
@@ -48,7 +48,7 @@ export default defineComponent({
       description: '仅接受 Github Issue 链接，留空删除',
       confirmText: '确认',
       cancelText: '取消',
-      onConfirm: value => this.linkIssue(value),
+      onConfirm: (value) => this.linkIssue(value),
       onCancel: this.cancel,
     });
   },

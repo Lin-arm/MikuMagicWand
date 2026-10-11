@@ -47,7 +47,15 @@ observeElement(
         window.open('https://afdian.com/a/Adpro');
       });
 
-      iconBar.append(ChangeScreenshotIcon, LinkToIssueIcon, JumpLinkedIssueIcon, SettingsIcon, CountIcon, HelpIcon, SponsorIcon);
+      iconBar.append(
+        ChangeScreenshotIcon,
+        LinkToIssueIcon,
+        JumpLinkedIssueIcon,
+        SettingsIcon,
+        CountIcon,
+        HelpIcon,
+        SponsorIcon,
+      );
       selectorSyntaxField.insertAdjacentElement('beforebegin', iconBar);
     }
   },
