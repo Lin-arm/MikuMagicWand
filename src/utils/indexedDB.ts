@@ -2,7 +2,6 @@ import localforage from 'localforage';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { Snapshot } from '../types/snapshot';
-import { IInspectSettings } from '../types/inspectSettings';
 import { detectImageMime } from './imageDetect';
 
 const localStorage = localforage.createInstance({
@@ -79,12 +78,4 @@ export const setHanashiroSettings = async <T>(item: string, value: T) => {
 
 export const getHanashiroSettings = async <T>(item: string): Promise<T | null> => {
   return await hanashiroStorage.getItem(item);
-};
-
-export const getInspectSettings = async (): Promise<IInspectSettings | null> => {
-  return await localStorage.getItem('settings');
-};
-
-export const setInspectSettings = async (newSettings: IInspectSettings) => {
-  await localStorage.setItem('settings', newSettings);
 };

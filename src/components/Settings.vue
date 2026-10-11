@@ -7,7 +7,8 @@ import settings from '../Settings/settings';
 import _import, { getLocalSettings } from '../Settings/import';
 import _export from '../Settings/export';
 import { send } from '../utils/event';
-import { getHanashiroSettings, getInspectSettings } from '../utils/indexedDB';
+import { getHanashiroSettings } from '../utils/indexedDB';
+import { getInspectSettings } from '../utils/inspectSettings';
 import type { RulesKeyOrder } from '../utils/sort';
 
 export default defineComponent({
@@ -39,9 +40,9 @@ export default defineComponent({
         (await getHanashiroSettings<RulesKeyOrder>('rulesKeySort'))!,
       );
     }
-    if (await getInspectSettings()) {
+    if (getInspectSettings()) {
       (document.querySelector('#maxShowSize') as TextField).value = String(
-        (await getInspectSettings())!.maxShowNodeSize,
+        getInspectSettings()!.maxShowNodeSize,
       );
     }
     if (await getHanashiroSettings<boolean>('hideLoadSnackbar'))

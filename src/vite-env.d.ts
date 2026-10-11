@@ -291,9 +291,7 @@ declare interface Window {
       storage: {
         getHanashiroSettings: <T>(item: string) => Promise<T | null>;
         setHanashiroSettings: <T>(item: string, value: T) => Promise<void>;
-        getInspectSettings: () => Promise<
-          import('./types/inspectSettings').IInspectSettings | null
-        >;
+        getInspectSettings: () => import('./types/inspectSettings').IInspectSettings | null;
         setInspectSettings: (
           newSettings: import('./types/inspectSettings').IInspectSettings,
         ) => void;

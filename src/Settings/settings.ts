@@ -1,7 +1,8 @@
 import { TextField, Switch, snackbar } from 'mdui';
 import json5 from 'json5';
 import { z } from 'zod';
-import { setHanashiroSettings, getInspectSettings, setInspectSettings } from '../utils/indexedDB';
+import { setHanashiroSettings } from '../utils/indexedDB';
+import { getInspectSettings, setInspectSettings } from '../utils/inspectSettings';
 import { send } from '../utils/event';
 import { RawCategoryZod } from '../types/categoryZod';
 
@@ -14,7 +15,7 @@ export default async () => {
   const isReadClipboard = (document.querySelector('#readClipboard') as Switch).checked;
   const isVidAdaption = (document.querySelector('#vidAdaption') as Switch).checked;
 
-  const inspectSettings = (await getInspectSettings())!;
+  const inspectSettings = getInspectSettings()!;
 
   let isCategoriesLegal = true;
 
@@ -41,7 +42,7 @@ export default async () => {
   await setHanashiroSettings('vidAdaption', isVidAdaption);
 
   inspectSettings.maxShowNodeSize = Number(maxShowSize);
-  await setInspectSettings(inspectSettings);
+  setInspectSettings(inspectSettings);
 
   send('closePage');
 };

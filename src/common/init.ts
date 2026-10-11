@@ -3,10 +3,9 @@ import { encode } from 'js-base64';
 import {
   getHanashiroSettings,
   setHanashiroSettings,
-  getInspectSettings,
-  setInspectSettings,
   getSnapshotInfo,
 } from '../utils/indexedDB';
+import { getInspectSettings, setInspectSettings } from '../utils/inspectSettings';
 import { receive } from '../utils/event';
 import getSnapshotId from '../utils/getSnapshotId';
 import type { ICount } from '../types/count';
@@ -66,12 +65,12 @@ else {
   }
 }
 
-if (!(await getInspectSettings()))
-  await setInspectSettings({
+if (!getInspectSettings())
+  setInspectSettings({
     autoUploadImport: false,
     ignoreUploadWarn: false,
-    ignoreWasmWarn: false,
     maxShowNodeSize: 2000,
+    themeMode: 'system',
   });
 
 if (!(await getHanashiroSettings<ICount>('count')))

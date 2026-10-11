@@ -5,9 +5,8 @@ import observeElement from '../utils/observeElement';
 import {
   getHanashiroSettings,
   setHanashiroSettings,
-  getInspectSettings,
-  setInspectSettings,
 } from '../utils/indexedDB';
+import { getInspectSettings, setInspectSettings } from '../utils/inspectSettings';
 import insertBarIcon from './insertBarIcon';
 
 Object.defineProperty(window, 'HatsuneMiku', {
