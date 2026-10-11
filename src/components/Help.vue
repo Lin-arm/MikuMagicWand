@@ -21,8 +21,6 @@ export default defineComponent({
       <p>
         本脚本已开源至Github，欢迎反馈：
         <a href="https://github.com/adproqwq/MikuMagicWand">Github仓库</a><br />
-        3.0重构计划缓慢推进中……
-        <br />
         你可以通过以下方式联系我：<br />
         邮箱：adpro_qwq@qq.com<br />
         Telegram群组：<a href="https://t.me/+P4y5kLo3UrUxMWY1">Telegram群组</a><br />
