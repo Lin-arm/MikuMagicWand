@@ -69,10 +69,10 @@ observeElement('#iconBar', async () => {
   openVscodeIcon.variant = 'secondary';
   openVscodeIcon.extended = true;
   openVscodeIcon.textContent = '在 VSCode 中打开';
-  openVscodeIcon.style.right = '16px';
-  openVscodeIcon.style.bottom = '180px';
+  openVscodeIcon.style.left = '87vw';
+  openVscodeIcon.style.bottom = '30vh';
   openVscodeIcon.setAttribute('fixed', '');
   openVscodeIcon.onclick = () => send('openVscode');
 
-  document.querySelectorAll('div[data-v-app=""]').item(1).firstElementChild!.append(openVscodeIcon);
+  document.body.append(openVscodeIcon);
 });
