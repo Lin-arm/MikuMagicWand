@@ -18,22 +18,22 @@
     "jszip": "^3.10.2",
     "localforage": "^1.10.0",
     "mdui": "^2.1.5",
-    "vue": "^3.5.43",
-    "zod": "^4.6.5"
+    "vue": "^3.5.44",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@gkd-kit/api": "^0.9.3",
     "@types/file-saver": "^2.0.7",
-    "@vitejs/plugin-vue": "^6.0.9",
-    "oxfmt": "^0.72.0",
-    "oxlint": "^1.87.0",
-    "oxlint-tsgolint": "^7.0.2003",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "oxlint-tsgolint": "^7.0.2004",
     "typescript": "7.0.2",
     "vite": "8.3.4",
     "vite-plugin-monkey": "8.1.1",
     "vue-router": "^5.4.0"
   },
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.14.0",
   "web-types": [
     "./node_modules/mdui/web-types.zh-cn.json"
   ]
