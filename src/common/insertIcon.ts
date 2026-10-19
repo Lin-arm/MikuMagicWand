@@ -3,11 +3,11 @@ import observeElement from '../utils/observeElement';
 import { createBarIcon } from '../utils/createIcon';
 
 observeElement(
-  '.GkDraggableCard > .app-panel > .selector-syntax-field',
+  '.GkDraggableCard > div > .selector-syntax-field',
   () => {
     if (!document.querySelector('#iconBar')) {
       const selectorSyntaxField = document.querySelector(
-        '.GkDraggableCard > .app-panel > .selector-syntax-field',
+        '.GkDraggableCard > div > .selector-syntax-field',
       )!;
       const iconBar = document.createElement('div');
       iconBar.id = 'iconBar';
