@@ -105,6 +105,10 @@ pnpm build
 
 ![img](https://contrib.rocks/image?repo=adproqwq/MakeGKDInspectBetter&max=200)
 
+感谢以下捐赠者：
+
+![img](https://github.cnxiaobai.com/https://github.com/adproqwq/sponsor/raw/refs/heads/main/afdian-sponsor.svg)
+
 ## 许可证
 
 本仓库已签署MIT开源许可证，请遵循相关许可证条款规定。
