@@ -7,7 +7,7 @@ import { getSnapshotInfo, getScreenshot } from '../utils/indexedDB';
 import { detectImageMime } from '../utils/imageDetect';
 
 export default defineComponent({
-  data(){
+  data() {
     return {
       prompt: `# 任务
 
@@ -150,7 +150,9 @@ export default defineComponent({
       const promptBlob = new Blob([AIPrompt], { type: 'text/markdown;charset=utf-8' });
       const promptURL = this.downloadBlob(promptBlob, 'prompt.md');
 
-      const snapshotBlob = new Blob([JSON.stringify(snapshotInfo)], { type: 'application/json;charset=utf-8' });
+      const snapshotBlob = new Blob([JSON.stringify(snapshotInfo)], {
+        type: 'application/json;charset=utf-8',
+      });
       const snapshotURL = this.downloadBlob(snapshotBlob, 'snapshot.json');
 
       const mime = detectImageMime(screenshot) ?? 'image/png';
