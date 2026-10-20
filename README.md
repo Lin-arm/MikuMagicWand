@@ -107,7 +107,7 @@ pnpm build
 
 感谢以下捐赠者：
 
-![img](https://github.cnxiaobai.com/https://github.com/adproqwq/sponsor/raw/refs/heads/main/afdian-sponsor.svg)
+![img](https://github.cnxiaobai.com/https://github.com/adproqwq/sponsor/raw/refs/heads/dist/afdian-sponsor.svg)
 
 ## 许可证
 

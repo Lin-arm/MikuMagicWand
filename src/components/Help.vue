@@ -32,7 +32,7 @@ export default defineComponent({
         <br />
         感谢以下捐献者：
         <img
-          src="https://github.cnxiaobai.com/https://github.com/adproqwq/sponsor/raw/refs/heads/main/afdian-sponsor.svg"
+          src="https://github.cnxiaobai.com/https://github.com/adproqwq/sponsor/raw/refs/heads/dist/afdian-sponsor.svg"
         />
       </p>
     </div>
