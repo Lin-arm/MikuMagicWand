@@ -43,7 +43,7 @@ export const replaceScreenshot = async (snapshotId: string, image: ArrayBuffer) 
 
 export const getSnapshotZip = async (snapshotId: string): Promise<Blob> => {
   const snapshotInfo = await getSnapshotInfo(snapshotId);
-  const screenshot = (await screenshotStorage.getItem<ArrayBuffer>(snapshotId))!;
+  const screenshot = (await getScreenshot(snapshotId))!;
 
   const jszip = new JSZip();
   jszip.file(`snapshot-${snapshotId}.json`, JSON.stringify(snapshotInfo, undefined, 2));

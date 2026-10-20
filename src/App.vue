@@ -19,6 +19,7 @@ import ChangeScreenshot from './components/ChangeScreenshot.vue';
 import Count from './components/Count.vue';
 import LinkToIssue from './components/LinkToIssue.vue';
 import JumpLinkedIssue from './components/JumpLinkedIssue.vue';
+import AIAssist from './components/AIAssist.vue';
 
 export default defineComponent({
   components: {
@@ -29,6 +30,7 @@ export default defineComponent({
     Count,
     LinkToIssue,
     JumpLinkedIssue,
+    AIAssist,
   },
   data() {
     return {
@@ -62,6 +64,10 @@ export default defineComponent({
 
     receive('openJumpLinkedIssue', () => {
       this.currentComponent = 'JumpLinkedIssue';
+    });
+
+    receive('openAIAssist', () => {
+      this.currentComponent = 'AIAssist';
     });
 
     receive('closePage', () => {

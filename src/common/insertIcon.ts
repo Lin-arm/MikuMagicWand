@@ -30,6 +30,9 @@ observeElement(
         send('openVscode'),
       );
 
+      // AI 辅助按钮
+      const AIAssistIcon = createBarIcon('text_snippet', 'AI 辅助', () => send('openAIAssist'));
+
       // 设置按钮
       const SettingsIcon = createBarIcon('settings', '脚本设置', () => send('openSettings'));
 
@@ -49,6 +52,7 @@ observeElement(
         LinkToIssueIcon,
         JumpLinkedIssueIcon,
         OpenVscodeIcon,
+        AIAssistIcon,
         SettingsIcon,
         CountIcon,
         HelpIcon,
