@@ -24,4 +24,8 @@ interface IRuleOutputDepthData {
   categories: RawCategory[];
 }
 
-export type MainDataType = ITsOutputDepthData | IAppOutputDepthData | IGroupOutputDepthData | IRuleOutputDepthData;
+export type MainDataType =
+  | ITsOutputDepthData
+  | IAppOutputDepthData
+  | IGroupOutputDepthData
+  | IRuleOutputDepthData;

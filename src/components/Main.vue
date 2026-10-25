@@ -28,7 +28,10 @@ export default defineComponent({
   },
   data() {
     return <MainDataType>{
-      originRule: getOutputDepth() === 'ts' ? window.Hanashiro.originRule : json5.parse(window.Hanashiro.originRule),
+      originRule:
+        getOutputDepth() === 'ts'
+          ? window.Hanashiro.originRule
+          : json5.parse(window.Hanashiro.originRule),
       outputDepth: getOutputDepth(),
       categories: [] as RawCategory[],
     };

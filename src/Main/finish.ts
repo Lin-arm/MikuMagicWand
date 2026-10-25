@@ -11,34 +11,33 @@ export default async (element: Button, data: MainDataType) => {
   const isNoExample = (document.querySelector('#noExample') as Switch).checked;
   const origin = data.originRule as RawApp | RawAppGroup;
 
-  if (ruleName){
-    if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = ruleName;
+  if (ruleName) {
+    if (data.outputDepth === 'app') (origin as RawApp).groups[0].name = ruleName;
     else (origin as RawAppGroup).name = ruleName;
-  }
-  else{
-    if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = '';
+  } else {
+    if (data.outputDepth === 'app') (origin as RawApp).groups[0].name = '';
     else (origin as RawAppGroup).name = '';
   }
 
   if (category) {
-    if (!ruleName){
-      if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = category;
+    if (!ruleName) {
+      if (data.outputDepth === 'app') (origin as RawApp).groups[0].name = category;
       else (origin as RawAppGroup).name = category;
-    }
-    else{
-      if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = `${category}-${(origin as RawApp).groups[0].name}`;
+    } else {
+      if (data.outputDepth === 'app')
+        (origin as RawApp).groups[0].name = `${category}-${(origin as RawApp).groups[0].name}`;
       else (origin as RawAppGroup).name = `${category}-${origin.name}`;
     }
   }
 
   if (isNoExample) {
     const rule =
-      data.outputDepth === 'app' ?
-      iArrayToArray((origin as RawApp).groups[0].rules as IArray<RawAppRule>)[0] :
-      iArrayToArray((origin as RawAppGroup).rules as IArray<RawAppRule>)[0];
+      data.outputDepth === 'app'
+        ? iArrayToArray((origin as RawApp).groups[0].rules as IArray<RawAppRule>)[0]
+        : iArrayToArray((origin as RawAppGroup).rules as IArray<RawAppRule>)[0];
     delete rule.exampleUrls;
 
-    if(data.outputDepth === 'app') (origin as RawApp).groups[0].rules = [rule];
+    if (data.outputDepth === 'app') (origin as RawApp).groups[0].rules = [rule];
     else (origin as RawAppGroup).rules = [rule];
   }
 
