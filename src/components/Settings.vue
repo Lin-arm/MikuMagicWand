@@ -9,7 +9,6 @@ import _export from '../Settings/export';
 import { send } from '../utils/event';
 import { getHanashiroSettings } from '../utils/indexedDB';
 import { getInspectSettings } from '../utils/inspectSettings';
-import type { RulesKeyOrder } from '../utils/sort';
 
 export default defineComponent({
   methods: {
@@ -33,11 +32,6 @@ export default defineComponent({
     if (await getHanashiroSettings('categories')) {
       (document.querySelector('#categories') as TextField).value = json5.stringify(
         (await getHanashiroSettings<RawCategory[]>('categories'))!,
-      );
-    }
-    if (await getHanashiroSettings('rulesKeySort')) {
-      (document.querySelector('#rulesKeySort') as TextField).value = json5.stringify(
-        (await getHanashiroSettings<RulesKeyOrder>('rulesKeySort'))!,
       );
     }
     if (getInspectSettings()) {
@@ -74,21 +68,6 @@ export default defineComponent({
         placeholder="填入合法的分类"
         rows="10"
       ></mdui-text-field>
-    </div>
-    <div>
-      <span>字段排序设置：</span>
-      <mdui-text-field
-        variant="filled"
-        id="rulesKeySort"
-        label="字段排序"
-        placeholder="目前仅支持rules内字段"
-        rows="10"
-      ></mdui-text-field>
-      <span class="introduction">
-        接受一个字符串数组，目前支持的字段有：
-        key,preKeys,fastQuery,matchTime,actionMaximum,resetMatch,priorityTime
-        matchRoot,action,activityIds,position,matches,exampleUrls,snapshotUrls
-      </span>
     </div>
     <div>
       <span>节点阈值：</span>

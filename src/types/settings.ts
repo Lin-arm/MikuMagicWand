@@ -1,9 +1,7 @@
-import { RawCategory } from '@gkd-kit/api';
-import type { RulesKeyOrder } from '../utils/sort';
+import type { RawCategory } from '@gkd-kit/api';
 
 export interface ISettings {
   categories: RawCategory[];
-  rulesKeySort: RulesKeyOrder;
   hideLoadSnackbar: boolean;
   simplyName: boolean;
   readClipboard: boolean;
