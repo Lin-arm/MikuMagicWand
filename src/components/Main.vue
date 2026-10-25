@@ -1,18 +1,19 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import json5 from 'json5';
-import type { RawApp, RawCategory } from '@gkd-kit/api';
+import type { RawCategory } from '@gkd-kit/api';
 import type { Button, Dialog, RadioGroup } from 'mdui';
 import finish from '../Main/finish';
 import key from '../Main/key';
 import { send } from '../utils/event';
 import { getHanashiroSettings } from '../utils/indexedDB';
 import getOutputDepth from '../utils/getOutputDepth';
+import type { MainDataType } from '../types/output';
 
 export default defineComponent({
   methods: {
     async finish(event: MouseEvent) {
-      await finish(event.target as Button);
+      await finish(event.target as Button, this.$data);
     },
     key() {
       key();
@@ -26,8 +27,8 @@ export default defineComponent({
     },
   },
   data() {
-    return {
-      originRule: <RawApp>json5.parse(window.Hanashiro.originRule),
+    return <MainDataType>{
+      originRule: getOutputDepth() === 'ts' ? window.Hanashiro.originRule : json5.parse(window.Hanashiro.originRule),
       outputDepth: getOutputDepth(),
       categories: [] as RawCategory[],
     };
@@ -44,7 +45,7 @@ export default defineComponent({
 
 <template>
   <mdui-dialog id="page" headline="配置" close-on-overlay-click close-on-esc @closed="closeDialog">
-    <div>
+    <div v-if="outputDepth !== 'rule' && outputDepth !== 'ts'">
       <span>选择分类：</span>
       <mdui-radio-group id="category" @change="currentCategoryChange($event)">
         <mdui-radio v-for="category in categories" :value="category.name">
@@ -69,13 +70,13 @@ export default defineComponent({
       >
       </mdui-text-field>
     </div>
-    <div>
+    <div v-if="outputDepth !== 'rule' && outputDepth !== 'ts'">
       <span>规则组名称：</span>
       <mdui-text-field
         id="ruleName"
         variant="filled"
         label="名称"
-        :placeholder="originRule.groups[0].name"
+        :placeholder="outputDepth === 'app' ? originRule.groups[0].name : originRule.name"
       ></mdui-text-field>
     </div>
     <div>

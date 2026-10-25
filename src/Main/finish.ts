@@ -1,34 +1,45 @@
 import json5 from 'json5';
 import type { Switch, TextField, Button } from 'mdui';
-import type { RawApp, IArray, RawAppRule } from '@gkd-kit/api';
+import type { RawApp, IArray, RawAppRule, RawAppGroup } from '@gkd-kit/api';
 import iArrayToArray from '../utils/iArrayToArray';
 import { send } from '../utils/event';
+import type { MainDataType } from '../types/output';
 
-export default async (element: Button) => {
+export default async (element: Button, data: MainDataType) => {
   const ruleName = (document.querySelector('#ruleName') as TextField).value;
   const category = window.Hanashiro.currentCategory;
   const isNoExample = (document.querySelector('#noExample') as Switch).checked;
-  const origin: RawApp = json5.parse(window.Hanashiro.originRule);
+  const origin = data.originRule as RawApp | RawAppGroup;
 
-  if (ruleName) origin.groups[0].name = ruleName;
-  else origin.groups[0].name = '';
+  if (ruleName){
+    if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = ruleName;
+    else (origin as RawAppGroup).name = ruleName;
+  }
+  else{
+    if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = '';
+    else (origin as RawAppGroup).name = '';
+  }
 
   if (category) {
-    if (!ruleName) origin.groups[0].name = category;
-    else origin.groups[0].name = `${category}-${origin.groups[0].name}`;
-
-    if (category == '开屏广告') {
-      origin.groups[0].priorityTime = 10000;
-      const rule = iArrayToArray(origin.groups[0].rules as IArray<RawAppRule>)[0];
-      delete rule.activityIds;
-      origin.groups[0].rules = [rule];
+    if (!ruleName){
+      if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = category;
+      else (origin as RawAppGroup).name = category;
+    }
+    else{
+      if(data.outputDepth === 'app') (origin as RawApp).groups[0].name = `${category}-${(origin as RawApp).groups[0].name}`;
+      else (origin as RawAppGroup).name = `${category}-${origin.name}`;
     }
   }
 
   if (isNoExample) {
-    const rule = iArrayToArray(origin.groups[0].rules as IArray<RawAppRule>)[0];
+    const rule =
+      data.outputDepth === 'app' ?
+      iArrayToArray((origin as RawApp).groups[0].rules as IArray<RawAppRule>)[0] :
+      iArrayToArray((origin as RawAppGroup).rules as IArray<RawAppRule>)[0];
     delete rule.exampleUrls;
-    origin.groups[0].rules = [rule];
+
+    if(data.outputDepth === 'app') (origin as RawApp).groups[0].rules = [rule];
+    else (origin as RawAppGroup).rules = [rule];
   }
 
   window.Hanashiro.returnResult = json5.stringify(origin, null, 2);
