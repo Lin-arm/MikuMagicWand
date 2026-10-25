@@ -79,15 +79,6 @@ export default defineComponent({
       ></mdui-text-field>
     </div>
     <div>
-      <span>规则组描述：</span>
-      <mdui-text-field
-        id="ruleDesc"
-        variant="filled"
-        label="描述"
-        placeholder="没有描述不填"
-      ></mdui-text-field>
-    </div>
-    <div>
       <mdui-button slot="action" id="ok" variant="filled" @click="finish($event)">确定</mdui-button>
       <mdui-button slot="action" id="ok_open" variant="tonal" @click="finish($event)"
         >确定并打开 VSCode</mdui-button
@@ -109,10 +100,5 @@ export default defineComponent({
 mdui-dialog > * > span {
   display: flex;
   font-size: var(--mdui-typescale-body-large-size);
-}
-
-.position {
-  width: 15%;
-  height: var(--mdui-typescale-title-large-line-height);
 }
 </style>
