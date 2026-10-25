@@ -2,15 +2,16 @@
 import { defineComponent } from 'vue';
 import json5 from 'json5';
 import type { RawApp, RawCategory } from '@gkd-kit/api';
-import { type Button, type Dialog, type RadioGroup } from 'mdui';
+import type { Button, Dialog, RadioGroup } from 'mdui';
 import finish from '../Main/finish';
 import key from '../Main/key';
 import { send } from '../utils/event';
 import { getHanashiroSettings } from '../utils/indexedDB';
+import getOutputDepth from '../utils/getOutputDepth';
 
 export default defineComponent({
   methods: {
-    async finish(event: Event) {
+    async finish(event: MouseEvent) {
       await finish(event.target as Button);
     },
     key() {
@@ -27,7 +28,7 @@ export default defineComponent({
   data() {
     return {
       originRule: <RawApp>json5.parse(window.Hanashiro.originRule),
-      copyDepth: 'app',
+      outputDepth: getOutputDepth(),
       categories: [] as RawCategory[],
     };
   },
@@ -55,7 +56,7 @@ export default defineComponent({
       <span>去除exampleUrls：</span>
       <mdui-switch id="noExample" checked></mdui-switch>
     </div>
-    <div>
+    <div v-if="outputDepth === 'rule'">
       <span>修改key值为：</span>
       <mdui-text-field
         id="key"
@@ -94,7 +95,7 @@ export default defineComponent({
       <mdui-button
         slot="action"
         id="ok_open_append"
-        v-if="copyDepth === 'app'"
+        v-if="outputDepth === 'app'"
         variant="tonal"
         @click="finish($event)"
       >
